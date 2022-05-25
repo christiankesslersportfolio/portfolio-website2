@@ -12,7 +12,7 @@ const App = () => {
       <Box bg="#FEFEE0">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="console" element={<Console />} />
+          <Route path="console/*" element={<Console />} />
         </Routes>
         {/* FOOTER */}
         <Footer />

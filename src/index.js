@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
-      <EVMContext defaultConnectionType="injected">
+      <EVMContext>
         <Router>
           <App />
         </Router>
