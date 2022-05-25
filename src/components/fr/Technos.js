@@ -38,7 +38,7 @@ const Technos = () => {
               p="5"
               w="7rem"
               transition="0.5s"
-              _hover={{ bg: "gray.100" }}
+              _hover={{ bg: "#FF7F50" }}
             >
               <Image m="auto" src={tech.img} />
               <Text mt="auto" as="b">
