@@ -5,12 +5,15 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import { ChakraProvider } from "@chakra-ui/react"
 import { EVMContext } from "react-ethers"
+import { BrowserRouter as Router } from "react-router-dom"
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
       <EVMContext>
-        <App />
+        <Router>
+          <App />
+        </Router>
       </EVMContext>
     </ChakraProvider>
   </React.StrictMode>,

@@ -1,0 +1,76 @@
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
+import oz from "../../assets/openzeppelin.png"
+import ozUp from "../../assets/openzeppelin-up.png"
+import erc20 from "../../assets/ERC20.png"
+import erc721 from "../../assets/ERC721.png"
+import erc1155 from "../../assets/ERC1155.png"
+import erc777 from "../../assets/ERC777.png"
+import erc2771 from "../../assets/ERC2771.png"
+
+const standards = [
+  {
+    img: oz,
+    description: "Librairie de Ssart contracts",
+    title: "OpenZeppelin",
+  },
+  {
+    img: ozUp,
+    description: "Librairie de smart contract améliorable (UUPS)",
+    title: "OpenZeppelin Upgradeable",
+  },
+  {
+    img: erc20,
+    description: "Jeton fongible",
+    title: "ERC20",
+  },
+  {
+    img: erc777,
+    description: "Jeton fongible avec opérateur",
+    title: "ERC777",
+  },
+  { img: erc721, description: "Jeton non fongible", title: "ERC721" },
+  {
+    img: erc1155,
+    description: "Jeton hybride (collections)",
+    title: "ERC1155",
+  },
+  {
+    img: erc2771,
+    description: "Contrat transitaire pour les meta-transactions",
+    title: "ERC2771",
+  },
+]
+
+const Standards = () => {
+  return (
+    <>
+      <Heading as="h1">Standards utilisés :</Heading>
+
+      <Flex my="5" flexWrap="wrap" gap="5">
+        {standards.map((erc) => {
+          return (
+            <Box
+              key={erc.description}
+              d="flex"
+              flexDirection="column"
+              alignItems="center"
+              borderRadius="5"
+              shadow="md"
+              p="5"
+              w="12rem"
+              transition="0.5s"
+              _hover={{ bg: "gray.100" }}
+            >
+              <Image m="auto" src={erc.img} />
+              <Text mt="auto" as="b">
+                {erc.title}
+              </Text>
+            </Box>
+          )
+        })}
+      </Flex>
+    </>
+  )
+}
+
+export default Standards
