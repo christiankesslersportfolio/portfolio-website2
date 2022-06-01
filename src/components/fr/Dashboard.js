@@ -1,18 +1,23 @@
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react"
-import { ethers } from "ethers"
-import { useEffect, useState } from "react"
-import { useContract, useEVM } from "react-ethers"
-import { fungibleTokenAbi, fungibleTokenAddr } from "../../contexts/contracts"
+import { Button, Flex, Heading } from "@chakra-ui/react"
+
+import { useEVM } from "react-ethers"
 
 const Dashboard = ({ balance, token }) => {
-  const { network, account } = useEVM()
+  const { network } = useEVM()
 
   return (
     <>
-      <Text>Vous êtes connecté sur {network.name}</Text>
-      <Text>Soldes : {balance} ERC20</Text>
+      <Flex
+        mx="auto"
+        justifyContent="space-around"
+        flexDirection="column"
+        p="10"
+      >
+        <Heading>Vous êtes connecté sur {network.name}</Heading>
+        <Heading>Soldes : {balance} ERC20</Heading>
 
-      <Button onClick={() => console.log(token.functions)}>Log</Button>
+        <Button onClick={() => console.log(token.functions)}>Log</Button>
+      </Flex>
     </>
   )
 }

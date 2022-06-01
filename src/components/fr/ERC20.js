@@ -1,18 +1,36 @@
-import { Button, Flex, Heading, Text } from "@chakra-ui/react"
+import { Flex, Heading, Input } from "@chakra-ui/react"
+import { ethers } from "ethers"
+import { useState } from "react"
+import ContractButton from "../ContractButton"
 
 const ERC20 = ({ token, balance }) => {
+  const [amount, setAmount] = useState(0)
+
   return (
     <>
-      <Flex p="10">
+      <Flex
+        mx="auto"
+        justifyContent="space-around"
+        flexDirection="column"
+        p="10"
+      >
         <Heading>Votre solde : {balance} ERC20 (Fungible Token)</Heading>
-        <Button
-          onClick={async () => {
-            console.log(token)
-            await token.mint(2000000)
-          }}
-        >
-          Mint some tokens
-        </Button>
+        <Flex>
+          <ContractButton
+            contractFunc={() => token.mint(ethers.utils.parseEther(amount))}
+          >
+            Mint {amount} tokens
+          </ContractButton>
+          <Input
+            ms="5"
+            bg="white"
+            value={amount}
+            type="number"
+            onChange={(e) => {
+              setAmount(e.target.value)
+            }}
+          />
+        </Flex>
       </Flex>
     </>
   )

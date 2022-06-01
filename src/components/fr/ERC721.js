@@ -1,12 +1,4 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  Input,
-  Link,
-  Spacer,
-  Text,
-} from "@chakra-ui/react"
+import { Flex, Heading, Input, Spacer, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import ContractButton from "../ContractButton"
 

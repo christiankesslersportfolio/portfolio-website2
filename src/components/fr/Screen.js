@@ -1,22 +1,17 @@
 import { Box, Text } from "@chakra-ui/react"
-import { ethers } from "ethers"
-import { useEffect, useState } from "react"
-import { useContract, useEVM } from "react-ethers"
+import { useEVM } from "react-ethers"
 import { Route, Routes } from "react-router-dom"
-import {
-  coloredTokenAbi,
-  coloredTokenAddr,
-  fungibleTokenAbi,
-  fungibleTokenAddr,
-} from "../../contexts/contracts"
+import { useERC20 } from "../../hooks/useERC20"
+
 import { useERC721 } from "../../hooks/useERC721"
 import Dashboard from "./Dashboard"
 import ERC20 from "./ERC20"
 import ERC721 from "./ERC721"
 
 const Screen = () => {
-  const { account, network, connectionType } = useEVM()
+  const { network, connectionType } = useEVM()
   const { token, userColor } = useERC721()
+  const { token: erc20, userBalance } = useERC20()
 
   return (
     <Box
@@ -35,11 +30,11 @@ const Screen = () => {
       <Routes>
         <Route
           path="dashboard"
-          // element={<Dashboard balance={balance} token={token} />}
+          element={<Dashboard balance={userBalance.balance} token={erc20} />}
         />
         <Route
           path="erc20"
-          // element={<ERC20 balance={balance} token={token} />}
+          element={<ERC20 balance={userBalance.balance} token={erc20} />}
         />
         <Route
           path="erc721"
