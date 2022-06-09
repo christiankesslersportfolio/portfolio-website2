@@ -69,6 +69,7 @@ const ContractButton = ({ isDisabled, contractFunc, children }) => {
 
   return (
     <Button
+      colorScheme="corail"
       isLoading={status === "Waiting for confirmation" || status === "Pending"}
       loadingText={status}
       disabled={

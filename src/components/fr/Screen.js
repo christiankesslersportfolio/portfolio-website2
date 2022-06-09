@@ -1,4 +1,4 @@
-import { Box, Text } from "@chakra-ui/react"
+import { Box, Flex, Heading, Text } from "@chakra-ui/react"
 import { useEVM } from "react-ethers"
 import { Route, Routes } from "react-router-dom"
 import { useERC20 } from "../../hooks/useERC20"
@@ -9,7 +9,7 @@ import ERC20 from "./ERC20"
 import ERC721 from "./ERC721"
 
 const Screen = () => {
-  const { network, connectionType } = useEVM()
+  const { network, connectionType, account } = useEVM()
   const { token, userColor } = useERC721()
   const { token: erc20, userBalance } = useERC20()
 
@@ -23,27 +23,60 @@ const Screen = () => {
       }
       width="75%"
       bg={connectionType === "not initialized" ? "black" : "gray.100"}
-      zIndex={connectionType === "not initialized" ? "dropdown" : 1}
-      d="flex"
+      zIndex={connectionType === "not initialized" ? 100000 : 1}
       transition="1s"
     >
-      <Routes>
-        <Route
-          path="dashboard"
-          element={<Dashboard balance={userBalance.balance} token={erc20} />}
-        />
-        <Route
-          path="erc20"
-          element={<ERC20 balance={userBalance.balance} token={erc20} />}
-        />
-        <Route
-          path="erc721"
-          element={<ERC721 contract={token} userInfo={userColor} />}
-        />
-      </Routes>
-      <Text position="fixed" ms="auto" mt="auto" fontWeight="bold">
-        {network.blockHeight}
-      </Text>
+      {connectionType === "not initialized" || !account.isLogged ? (
+        connectionType === "not initialized" ? (
+          <>
+            <Heading my="10" textAlign="center" color="gray.100">
+              Installez une extensions web pour injecter le web3
+            </Heading>
+            <Text textAlign="center" color="gray.100">
+              Comme Metamask, Brave (intégré au navigateur), XDEFI
+            </Text>
+          </>
+        ) : (
+          <Heading mt="10" textAlign="center">
+            Connectez-vous à la dApp pour continuer
+          </Heading>
+        )
+      ) : (
+        <>
+          <Routes>
+            <Route
+              path="dashboard"
+              element={
+                <Dashboard balance={userBalance.balance} token={erc20} />
+              }
+            />
+            <Route
+              path="erc20"
+              element={
+                erc20 ? (
+                  <ERC20 balance={userBalance.balance} token={erc20} />
+                ) : (
+                  "Waiting for ERC20 contract"
+                )
+              }
+            />
+            <Route
+              path="erc721"
+              element={<ERC721 contract={token} userInfo={userColor} />}
+            />
+          </Routes>
+          <Text
+            bottom="5rem"
+            right="1rem"
+            position="absolute"
+            ms="auto"
+            mt="auto"
+            fontWeight="bold"
+          >
+            {network.blockHeight}
+          </Text>
+        </>
+      )}
     </Box>
   )
 }

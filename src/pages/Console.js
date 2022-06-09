@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react"
+import { Box, Flex } from "@chakra-ui/react"
 
 import Screen from "../components/fr/Screen"
 import ERC721Provider from "../contexts/ERC721Context"
@@ -11,11 +11,13 @@ const Console = () => {
     <>
       <ERC721Provider>
         <ERC20Provider>
-          <Launcher />
-          <Flex minH="83.4vh">
-            <Menu />
-            <Screen />
-          </Flex>
+          <Box>
+            <Launcher />
+            <Flex minH="79.4vh">
+              <Menu />
+              <Screen />
+            </Flex>
+          </Box>
         </ERC20Provider>
       </ERC721Provider>
     </>
