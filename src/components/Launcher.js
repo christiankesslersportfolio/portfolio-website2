@@ -2,10 +2,12 @@ import { Box, Button, Flex, Heading } from "@chakra-ui/react"
 import { useState } from "react"
 import { useEVM } from "react-ethers"
 import { useERC721 } from "../hooks/useERC721"
+import { useUserName } from "../hooks/useUserName"
 
 const Launcher = () => {
   const { methods, account, connectionType } = useEVM()
   const { userColor } = useERC721()
+  const { surname } = useUserName()
   const [showName, setShowName] = useState(false)
 
   return (
@@ -21,7 +23,7 @@ const Launcher = () => {
             bgColor={userColor.haveColor ? userColor.color : ""}
             onClick={() => setShowName((p) => !p)}
           >
-            {showName ? account.address : "No domain name"}
+            {showName ? account.address : surname ? surname : "No user name"}
           </Button>
         ) : (
           <Button onClick={() => methods.loginToInjected()}>Login</Button>

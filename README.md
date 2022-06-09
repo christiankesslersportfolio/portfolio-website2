@@ -1,11 +1,15 @@
 # Portfolio website
 
 Link to socials ! Good logo
-donation, revert message
+donation
 
-Contract domain name ? => very simple (without hash ?) => soulbound token !
+SHop => Boosters,
+ERC721 => Transfer or burn, image + link, Number of token emitted in context
+ERC1155 => display cards
 
-ERC1155: Cards? BHL? => vignette (ipfs)
-Buy by ERC20 => approve => useERC777 (choice) to show no need to approve + discount
+=> Font + console menu style
+Deploy rinkeby => opensea
+
+=> Production !
 
 ERC2771 need a relayers, keep tx in cache. => difficult but got good nft (better than BHL ? or juste BHL which is the end of the road)

@@ -4,7 +4,7 @@ import { useState } from "react"
 import ContractButton from "../ContractButton"
 
 const ERC20 = ({ token, balance }) => {
-  const [amount, setAmount] = useState(50)
+  const [amount, setAmount] = useState("50")
 
   return (
     <>
@@ -62,6 +62,13 @@ const ERC20 = ({ token, balance }) => {
             />
           </FormLabel>
         </Flex>
+        {balance > 0 ? (
+          <Text>
+            Maintenant que vous avez des jetons allez faire un tour au Shop
+          </Text>
+        ) : (
+          ""
+        )}
       </Flex>
     </>
   )

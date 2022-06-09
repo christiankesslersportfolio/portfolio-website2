@@ -13,20 +13,27 @@ const ERC20Provider = ({ children }) => {
     ropsten.FungibleToken.abi
   )
   const { account } = useEVM()
-  const [userBalance, setUserBalance] = useState({ balance: 0 })
+  const [userInfo, setUserInfo] = useState({ balance: 0, shopAllowance: 0 })
 
   useEffect(() => {
     const main = async () => {
       if (token && account.isLogged) {
         const rawBalance = await token.balanceOf(account.address)
-        setUserBalance({ balance: ethers.utils.formatEther(rawBalance) })
+        const shopAllowance = await token.allowance(
+          account.address,
+          ropsten.Shop.address
+        )
+        setUserInfo({
+          balance: Number(ethers.utils.formatEther(rawBalance)),
+          shopAllowance: Number(ethers.utils.formatEther(shopAllowance)),
+        })
       }
     }
     main()
-  }, [token, account.address, account.isLogged])
+  }, [token, account.address, account.isLogged, ropsten.Shop.address])
 
   return (
-    <ERC20Context.Provider value={{ token, userBalance }}>
+    <ERC20Context.Provider value={{ token, userInfo }}>
       {children}
     </ERC20Context.Provider>
   )

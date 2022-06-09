@@ -1,5 +1,5 @@
-import { Box, Flex, Heading, Text } from "@chakra-ui/react"
-import { useEVM } from "react-ethers"
+import { Box, Heading, Text } from "@chakra-ui/react"
+import { useEVM, useContract } from "react-ethers"
 import { Route, Routes } from "react-router-dom"
 import { useERC20 } from "../../hooks/useERC20"
 
@@ -7,11 +7,15 @@ import { useERC721 } from "../../hooks/useERC721"
 import Dashboard from "./Dashboard"
 import ERC20 from "./ERC20"
 import ERC721 from "./ERC721"
+import Shop from "./Shop"
+import contracts from "../../contexts/contracts.json"
 
 const Screen = () => {
+  const { ropsten } = contracts
+  const shop = useContract(ropsten.Shop.address, ropsten.Shop.abi)
   const { network, connectionType, account } = useEVM()
   const { token, userColor } = useERC721()
-  const { token: erc20, userBalance } = useERC20()
+  const { token: erc20, userInfo } = useERC20()
 
   return (
     <Box
@@ -46,17 +50,30 @@ const Screen = () => {
           <Routes>
             <Route
               path="dashboard"
-              element={
-                <Dashboard balance={userBalance.balance} token={erc20} />
-              }
+              element={<Dashboard balance={userInfo.balance} token={erc20} />}
             />
             <Route
               path="erc20"
               element={
                 erc20 ? (
-                  <ERC20 balance={userBalance.balance} token={erc20} />
+                  <ERC20 balance={userInfo.balance} token={erc20} />
                 ) : (
                   "Waiting for ERC20 contract"
+                )
+              }
+            />
+            <Route
+              path="shop"
+              element={
+                shop ? (
+                  <Shop
+                    shop={shop}
+                    userColor={userColor}
+                    erc20={erc20}
+                    erc20Info={userInfo}
+                  />
+                ) : (
+                  ""
                 )
               }
             />

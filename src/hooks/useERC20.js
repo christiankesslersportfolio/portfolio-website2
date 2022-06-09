@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { ERC20Context } from "../contexts/ERC20Context"
 
 export const useERC20 = () => {
-  const { token, userBalance } = useContext(ERC20Context)
+  const { token, userInfo } = useContext(ERC20Context)
 
   if (token === undefined) {
     throw new Error(
@@ -10,5 +10,5 @@ export const useERC20 = () => {
     )
   }
 
-  return { token, userBalance }
+  return { token, userInfo }
 }
