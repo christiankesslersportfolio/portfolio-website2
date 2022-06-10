@@ -7,8 +7,6 @@ const modules = [
   { path: "shop", display: "Shop" },
   { path: "erc721", display: "ERC721" },
   { path: "erc1155", display: "ERC1155" },
-  { path: "erc777", display: "ERC777" },
-  { path: "erc2771", display: "ERC2771" },
 ]
 
 const Menu = () => {

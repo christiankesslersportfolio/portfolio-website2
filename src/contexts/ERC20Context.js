@@ -18,15 +18,21 @@ const ERC20Provider = ({ children }) => {
   useEffect(() => {
     const main = async () => {
       if (token && account.isLogged) {
-        const rawBalance = await token.balanceOf(account.address)
-        const shopAllowance = await token.allowance(
-          account.address,
-          ropsten.Shop.address
-        )
-        setUserInfo({
-          balance: Number(ethers.utils.formatEther(rawBalance)),
-          shopAllowance: Number(ethers.utils.formatEther(shopAllowance)),
-        })
+        try {
+          const rawBalance = await token.balanceOf(account.address)
+          const shopAllowance = await token.allowance(
+            account.address,
+            ropsten.Shop.address
+          )
+          setUserInfo({
+            balance: Number(ethers.utils.formatEther(rawBalance)),
+            shopAllowance: Number(ethers.utils.formatEther(shopAllowance)),
+          })
+        } catch (e) {
+          console.log(token)
+          console.log(account.address)
+          console.log(e)
+        }
       }
     }
     main()

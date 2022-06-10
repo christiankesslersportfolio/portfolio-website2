@@ -12,7 +12,7 @@ import { useState } from "react"
 import { useUserName } from "../../hooks/useUserName"
 import ContractButton from "../ContractButton"
 
-const Shop = ({ shop, userColor, erc20, erc20Info }) => {
+const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
   const { userName, surname: _surname } = useUserName()
   const [color, setColor] = useState("#000000")
   const [surname, setSurname] = useState(_surname)
@@ -131,6 +131,20 @@ const Shop = ({ shop, userColor, erc20, erc20Info }) => {
                 ? "Name available"
                 : `Owned by ${available}`}
             </Text>
+          </Flex>
+        </Flex>
+
+        {/* CARDS */}
+        <Flex textAlign="start" flexDirection="column" mt="10">
+          <Text>
+            Achetez un booster de cartes, le booster doit être ensuite échanger
+            pour recevoir les cartes
+          </Text>
+          <Flex my="5" alignItems="center">
+            <Text me="5">Vous avez X booster(s)</Text>
+            <ContractButton contractFunc={() => shop.buyBooster()}>
+              Get your booster
+            </ContractButton>
           </Flex>
         </Flex>
       </Flex>

@@ -9,7 +9,7 @@ import Home from "./pages/Home"
 const App = () => {
   return (
     <>
-      <Box alignItems="space-around" minH="100vh" bg="#FEFEE0">
+      <Box alignItems="space-around" minH="100vh" bg="ecru.100">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="console/*" element={<Console />} />

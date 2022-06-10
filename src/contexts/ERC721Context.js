@@ -1,4 +1,3 @@
-import { ethers } from "ethers"
 import { createContext, useEffect, useState } from "react"
 import { useContract, useEVM } from "react-ethers"
 import contracts from "./contracts.json"
@@ -20,35 +19,31 @@ const ERC721Provider = ({ children }) => {
   useEffect(() => {
     // check user balance and get tokenID
     const main = async () => {
-      if (token) {
-        const enters = token.filters.Transfer(null, account.address, null)
-        const exits = token.filters.Transfer(account.address, null, null)
+      let tokenId
+      const balance = await token.balanceOf(account.address)
 
-        let tokenId
-        const enter = await token.queryFilter(enters)
+      if (balance.toString() !== "0") {
+        const enters = await token.queryFilter(
+          token.filters.Transfer(null, account.address, null)
+        )
+        tokenId = enters[enters.length - 1].args.tokenId.toHexString()
+      }
 
-        if (enter.length !== 0) {
-          const exit = await token.queryFilter(exits)
-          if (exit.length !== 0) {
-            const balance = enter
-              .concat(exit)
-              .sort((a, b) => b.blockNumber - a.blockNumber)
-            if (balance[0].args.to !== ethers.constants.AddressZero) {
-              tokenId = balance[0].args.tokenId.toHexString()
-            }
-          } else {
-            tokenId = enter[0].args.tokenId.toHexString()
-          } // no burn
-        } // no entry
-
-        if (tokenId) {
-          setUserColor({ haveColor: true, color: `#${tokenId.slice(2)}` })
-        } else {
-          setUserColor({ haveColor: false, color: "#000000" })
-        }
+      if (tokenId) {
+        setUserColor({ haveColor: true, color: `#${tokenId.slice(2)}` })
+      } else {
+        setUserColor({ haveColor: false, color: "#000000" })
       }
     }
-    main()
+    if (account.address && token) {
+      try {
+        main()
+      } catch (e) {
+        console.log(token)
+        console.log(account.address)
+        console.log(e)
+      }
+    }
   }, [account.address, token])
 
   return (

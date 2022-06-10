@@ -13,14 +13,19 @@ const Footer = () => {
         maxW="container.xl"
       >
         <Box>
-          <Text textAlign="center" fontWeight="bold" color="white">
+          <Text color="white" textAlign="center" fontWeight="bold">
             @Raphaël Pellet
           </Text>
         </Box>
         <Box>
           <Text textAlign="center" fontWeight="bold" color="white">
             Créer à l'aide de{" "}
-            <Link href="https://chakra-ui.com/">ChakraUI</Link>
+            <Link
+              _hover={{ color: "corail.500" }}
+              href="https://chakra-ui.com/"
+            >
+              ChakraUI
+            </Link>
           </Text>
         </Box>
         <Box>

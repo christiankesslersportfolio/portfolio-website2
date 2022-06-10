@@ -14,8 +14,14 @@ const UserNameProvider = ({ children }) => {
   useEffect(() => {
     const main = async () => {
       if (userName && account.isLogged) {
-        const walletName = await userName.getName(account.address)
-        setSurname(walletName)
+        try {
+          const walletName = await userName.getName(account.address)
+          setSurname(walletName)
+        } catch (e) {
+          console.log(userName)
+          console.log(account.address)
+          console.log(e)
+        }
       }
     }
     main()

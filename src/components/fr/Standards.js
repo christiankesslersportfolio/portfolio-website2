@@ -70,7 +70,7 @@ const Standards = () => {
           )
         })}
       </Flex>
-      <Button>
+      <Button colorScheme="corail">
         <Link as={RouterLink} to="console">
           Essayer la console
         </Link>

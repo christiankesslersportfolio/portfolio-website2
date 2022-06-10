@@ -3,8 +3,10 @@
 Link to socials ! Good logo
 donation
 
-SHop => Boosters,
-ERC721 => Transfer or burn, image + link, Number of token emitted in context
+SHop => Boosters
+
+ERC1155 => efficient way to list inventory of user (Single vs Batch vs BalanceOfBatch)
+
 ERC1155 => display cards
 
 => Font + console menu style

@@ -9,6 +9,7 @@ import ERC20 from "./ERC20"
 import ERC721 from "./ERC721"
 import Shop from "./Shop"
 import contracts from "../../contexts/contracts.json"
+import { useERC1155 } from "../../hooks/useERC1155"
 
 const Screen = () => {
   const { ropsten } = contracts
@@ -16,6 +17,7 @@ const Screen = () => {
   const { network, connectionType, account } = useEVM()
   const { token, userColor } = useERC721()
   const { token: erc20, userInfo } = useERC20()
+  const { cards } = useERC1155()
 
   return (
     <Box
@@ -71,6 +73,7 @@ const Screen = () => {
                     userColor={userColor}
                     erc20={erc20}
                     erc20Info={userInfo}
+                    cards={cards}
                   />
                 ) : (
                   ""

@@ -6,6 +6,7 @@ const Header = () => {
     <Box p="10">
       <Flex
         borderRadius="5"
+        bg="ecru.600"
         shadow="lg"
         flexDirection={{ base: "column-reverse", md: "row" }}
         justifyContent="space-between"
