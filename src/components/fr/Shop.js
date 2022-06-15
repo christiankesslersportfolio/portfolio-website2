@@ -17,6 +17,7 @@ const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
   const [color, setColor] = useState("#000000")
   const [surname, setSurname] = useState(_surname)
   const [available, setAvailable] = useState("")
+  const [booster, setBooster] = useState(0)
 
   return (
     <>
@@ -144,6 +145,24 @@ const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
             <Text me="5">Vous avez X booster(s)</Text>
             <ContractButton contractFunc={() => shop.buyBooster()}>
               Get your booster
+            </ContractButton>
+          </Flex>
+          <Flex my="5" alignItems="center">
+            <FormLabel d="flex" flexDirection="column" me="20">
+              Entrez le numéro de votre booster
+              <Input
+                maxW="10rem"
+                onChange={(e) => {
+                  setBooster(e.target.value)
+                }}
+                bg="white"
+                type="text"
+                value={booster}
+                placeholder="Entrer l'ID du booster"
+              />
+            </FormLabel>
+            <ContractButton contractFunc={() => shop.openBooster(booster)}>
+              Open your booster the #{booster} booster
             </ContractButton>
           </Flex>
         </Flex>

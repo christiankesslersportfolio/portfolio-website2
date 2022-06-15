@@ -1,9 +1,9 @@
-import { Button, Flex, Heading } from "@chakra-ui/react"
+import { Flex, Heading } from "@chakra-ui/react"
 
 import { useEVM } from "react-ethers"
 
 const Dashboard = ({ balance, token }) => {
-  const { network } = useEVM()
+  const { network, account } = useEVM()
 
   return (
     <>
@@ -13,10 +13,15 @@ const Dashboard = ({ balance, token }) => {
         flexDirection="column"
         p="10"
       >
-        <Heading>Vous êtes connecté sur {network.name}</Heading>
-        <Heading>Soldes : {balance} ERC20</Heading>
-
-        <Button onClick={() => console.log(token.functions)}>Log</Button>
+        <Heading my="10" textAlign="center">
+          Vous êtes connecté sur {network.name}
+        </Heading>
+        <Heading mt="10" textAlign="center">
+          Avec le compte :
+        </Heading>
+        <Heading my="10" textAlign="center">
+          {account.address}
+        </Heading>
       </Flex>
     </>
   )

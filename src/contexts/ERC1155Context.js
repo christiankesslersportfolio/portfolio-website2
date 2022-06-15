@@ -19,7 +19,7 @@ const createInventory = async (entrySingle, entryBatch, cards) => {
     }
   }
 
-  const balances = await cards.balanceOfBatch(entrylist)
+  // const balances = await cards.balanceOfBatch(entrylist)
 
   return entrylist
 }
