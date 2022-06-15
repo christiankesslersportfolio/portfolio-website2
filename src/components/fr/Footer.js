@@ -1,9 +1,25 @@
-import { Box, Container, Flex, Image, Link, Text } from "@chakra-ui/react"
-import github from "../../assets/github.png"
-import linkedin from "../../assets/linkedin.png"
-import { EmailIcon, ChatIcon } from "@chakra-ui/icons"
+import {
+  Box,
+  Container,
+  Flex,
+  Link,
+  Text,
+  Image,
+  Tooltip,
+  useClipboard,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverBody,
+} from "@chakra-ui/react"
+
+import { EmailIcon } from "@chakra-ui/icons"
+import { FaLinkedin, FaGithub } from "react-icons/fa"
+import { AiFillMessage } from "react-icons/ai"
 
 const Footer = () => {
+  const { hasCopied, onCopy } = useClipboard("raphael.pellet@protonmail.com")
   return (
     <Flex mt="auto" bg="blackAlpha.800">
       <Container
@@ -30,10 +46,72 @@ const Footer = () => {
         </Box>
         <Box>
           <Flex alignItems="center" gap="5">
-            <Image w="2rem" src={github} />
-            <Image w="2rem" src={linkedin} />
-            <Image w="2rem" color="white" as={EmailIcon} />
-            <Image w="2rem" color="white" as={ChatIcon} />
+            <Link isExternal href="https://github.com/RaphaelHardFork">
+              <Image
+                w="2rem"
+                h="2rem"
+                color="white"
+                _hover={{ color: "corail.500" }}
+                transition="0.4s"
+                as={FaGithub}
+              />
+            </Link>
+            <Link
+              isExternal
+              href="https://www.linkedin.com/in/rapha%C3%ABl-pellet-blockchain/"
+            >
+              <Image
+                w="2rem"
+                h="2rem"
+                color="white"
+                _hover={{ color: "corail.500" }}
+                transition="0.4s"
+                as={FaLinkedin}
+              />
+            </Link>
+            <Tooltip
+              label={hasCopied ? "Copied" : "raphael.pellet@protonmail.com"}
+              aria-label="A tooltip"
+              closeOnClick={false}
+            >
+              <Link>
+                <Image
+                  w="2rem"
+                  h="2rem"
+                  color="white"
+                  _hover={{ color: "corail.500" }}
+                  transition="0.4s"
+                  as={EmailIcon}
+                  onClick={onCopy}
+                />
+              </Link>
+            </Tooltip>
+            <Popover>
+              <PopoverTrigger pointerEvents="fill">
+                <Link>
+                  <Image
+                    w="2rem"
+                    h="2rem"
+                    color="white"
+                    _hover={{ color: "corail.500" }}
+                    transition="0.4s"
+                    as={AiFillMessage}
+                  />
+                </Link>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverArrow />
+                <PopoverBody fontWeight="bold" fontSize="xl">
+                  <Text my="5">
+                    Telegram:{" "}
+                    <Link isExternal href="https://t.me/Raphael_Pellet">
+                      @Raphael_Pellet
+                    </Link>
+                  </Text>
+                  <Text my="5">Discord: ᖇᗩᑭᕼ丅ᗝᑎǤ#8885</Text>
+                </PopoverBody>
+              </PopoverContent>
+            </Popover>
           </Flex>
         </Box>
       </Container>
