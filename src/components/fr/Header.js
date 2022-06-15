@@ -1,7 +1,10 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
 import profilPicture from "../../assets/profil-picture.png"
+import { useLang } from "../../hooks/useLang"
 
 const Header = () => {
+  const { lang } = useLang()
+
   return (
     <Box p="10">
       <Flex
@@ -17,12 +20,22 @@ const Header = () => {
               <Heading fontSize="6xl" as="h1" my="5">
                 Raphaël Pellet
               </Heading>
-              <Text as="i">Crois en l'intelligence et la (bio)diversité</Text>
+              <Text as="i">
+                {lang === "fr"
+                  ? "Crois en l'intelligence et la (bio)diversité"
+                  : "Believe in intelligence and (bio)diversity"}{" "}
+              </Text>
             </Box>
             <Box>
-              <Text fontSize="xl" pb="4" display="block">
-                Développeur <i>Full stack</i> Ethereum
-              </Text>
+              {lang === "fr" ? (
+                <Text fontSize="xl" pb="4" display="block">
+                  Développeur <i>Full stack</i> Ethereum
+                </Text>
+              ) : (
+                <Text fontSize="xl" pb="4" display="block">
+                  <i>Full stack</i> Ethereum developer
+                </Text>
+              )}
             </Box>
           </Flex>
         </Box>

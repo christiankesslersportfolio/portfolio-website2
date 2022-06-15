@@ -1,10 +1,31 @@
-import { Divider, Heading, Link, Text } from "@chakra-ui/react"
+import { Box, Divider, Heading, Link, Text } from "@chakra-ui/react"
+import { useLang } from "../../hooks/useLang"
+
+const link = {
+  ideasoft: (
+    <Link _hover={{ color: "#FF7F50" }} href="https://ideasoft.io/">
+      IdeaSoft
+    </Link>
+  ),
+  sigma: (
+    <Link _hover={{ color: "#FF7F50" }} href="https://sigma.software/ ">
+      Sigma Software
+    </Link>
+  ),
+  alyra: (
+    <Link _hover={{ color: "#FF7F50" }} href="https://alyra.fr/">
+      Alyra
+    </Link>
+  ),
+}
 
 const Background = () => {
+  const { lang } = useLang()
+
   return (
     <>
       <Heading color="#FF7F50" mt="10rem" as="h1">
-        Mon parcours
+        {lang === "fr" ? "Mon parcours" : "My background"}
       </Heading>
       <Divider
         my="3"
@@ -13,84 +34,160 @@ const Background = () => {
         borderColor="#FF7F50"
         borderBottomWidth="0.125rem"
       />
+
+      {/* IDEASOFT */}
       <Heading mt="6" as="h2">
-        Développeur Solidity chez{" "}
-        <Link _hover={{ color: "#FF7F50" }} href="https://ideasoft.io/">
-          IdeaSoft
-        </Link>
+        {lang === "fr"
+          ? "Développeur Solidity chez "
+          : "Solidity developer at "}
+        {link.ideasoft}
       </Heading>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        J’ai travaillé pendant 6 mois chez Ideasoft en tant que développeur
-        Solidity. IdeaSoft est une entreprise ukrainienne de plus de 150
-        employés basée (avant la guerre) à Kharkiv. Elle est devenu membre du
-        groupe{" "}
-        <Link _hover={{ color: "#FF7F50" }} href="https://sigma.software/ ">
-          Sigma Software
-        </Link>{" "}
-        en 2021.
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Durant cette expérience j’ai été affecté à plusieurs projets sur les
-        thématiques de la DeFi (finance décentralisée, plus précisément sur
-        l’assurance décentralisée), les noms de domaines décentralisés ainsi que
-        sur les NFT (jetons non fongibles).
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Le département blockchain était composé d’une équipe de 10 personnes où
-        nous faisons régulièrement des sessions d’apprentissage et d’entraide
-        sur Solidity, l’EVM et un peu sur le front-end.
-      </Text>
+      <Box fontSize="xl" lineHeight="8">
+        {lang === "fr" ? (
+          <>
+            <Text mt="4">
+              J’ai travaillé pendant 6 mois chez Ideasoft en tant que
+              développeur Solidity. IdeaSoft est une entreprise ukrainienne de
+              plus de 150 employés basée (avant la guerre) à Kharkiv. Elle est
+              devenu membre du groupe {link.sigma} en 2021
+            </Text>
+            <Text mt="4">
+              Durant cette expérience j’ai été affecté à plusieurs projets sur
+              les thématiques de la DeFi (finance décentralisée, plus
+              précisément sur l’assurance décentralisée), les noms de domaines
+              décentralisés ainsi que sur les NFT (jetons non fongibles).
+            </Text>
+            <Text mt="4">
+              Le département blockchain était composé d’une équipe de 10
+              personnes où nous faisons régulièrement des sessions
+              d’apprentissage et d’entraide sur Solidity, l’EVM et un peu sur le
+              front-end.
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text>
+              I worked for 6 months at Ideasoft as a Solidity developer.
+              IdeaSoft is a Ukrainian company with more than 150 employees based
+              (before the war) in Kharkiv. It became a member of the{" "}
+              {link.sigma} group in 2021.
+            </Text>
+            <Text mt="4">
+              During this experience I was assigned to several projects
+              regarding DeFi (decentralized finance, more specifically on
+              decentralized insurance), domain names decentralized as well as on
+              NFTs (non-fungible tokens).
+            </Text>
+            <Text mt="4">
+              The blockchain department consisted of a team of 10 people where
+              we regularly did learning and collaboration sessions on Solidity,
+              the EVM and a little on the front end.
+            </Text>
+          </>
+        )}
+      </Box>
+
+      {/* ALYRA */}
       <Heading mt="6" as="h2">
-        Apprenant à l’école{" "}
-        <Link _hover={{ color: "#FF7F50" }} href="https://alyra.fr/">
-          Alyra
-        </Link>
+        {lang === "fr" ? "Apprenant à l’école " : "Student at "}
+        {link.alyra}
       </Heading>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        J’ai eu la chance de participé à la dernière session de reconversion
-        professionnelle proposé par l’école d’une durée de 6 mois. Grace aux
-        trois encadrant très compétant dans leur domaines respectifs, j’ai pu
-        apprendre le code avec seulement une lointaine expérience sur R.
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Pendant cette formation j’ai appris la culture du Web et les pratiques
-        de travaille dans ce domaine (méthode Agile & SCRUM). Nous avons
-        pratiqué les bases du développement Web avec HTML, CSS et JavaScript
-        ainsi que l’utilisation de GitHub pour les projets collaboratifs ou
-        personnel.
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Avec cette base nous avons pu explorer des frameworks pour le
-        développement front-end avec ReactJS, Bootstrap et Chakra UI. Ainsi que
-        le développement back-end avec Node.js et une légère initiation à
-        Express.js pour créer des serveurs.
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Ensuite nous avons attaqué notre apprentissage sur la blockchain par un
-        peu de culture de cet écosystème (Satoshi Nakamoto, Bitcoin, Ethereum et
-        son fonctionnement, …). Nous avons eu beaucoup de temps de cours sur
-        Solidity et les bonnes pratiques de ce langage (notamment l’utilisation
-        d’OpenZeppelin). Dans un premier nous utilisions Remix pour écrire et
-        déployer nos smart contracts. Avec les bases en Node.js Hardhat, outils
-        de développement Ethereum, était plus facile à prendre en main. Avec
-        Hardhat nous avons appris à écrire, à l’aide des librairies Waffle et
-        Ethers.js, des tests unitaires sur les smart contracts et des scripts de
-        déploiement et post-déploiement sur différents réseaux.
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Mis ensemble ces savoirs nous ont permit de présenter un projet
-        full-stack en fin de formation, une dApp avec un front-end réalisé avec
-        ReactJS relié un back-end sur Ethereum (testnet).
-      </Text>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        En parallèle la promotion a eu l’occasion de présenter des veilles
-        technologiques sur un large panel de sujets.
-      </Text>
+      <Box fontSize="xl" lineHeight="8">
+        {lang === "fr" ? (
+          <>
+            <Text mt="4">
+              J’ai eu la chance de participer à la dernière session de
+              reconversion professionnelle proposée par l’école d’une durée de 6
+              mois. Grâce aux trois encadrants très compétant dans leur domaines
+              respectifs, j’ai pu apprendre le code avec seulement une lointaine
+              expérience sur <b>R</b>.
+            </Text>
+            <Text mt="4">
+              Pendant cette formation, j’ai appris la culture du Web et les
+              pratiques de travail dans ce domaine (méthode Agile & SCRUM). Nous
+              avons pratiqué les bases du développement Web avec HTML, CSS et
+              JavaScript ainsi que l’utilisation de GitHub pour les projets
+              collaboratifs ou personnel.
+            </Text>
+            <Text mt="4">
+              Avec cette base, nous avons pu explorer des frameworks pour le
+              développement front-end avec ReactJS, Bootstrap et Chakra UI.
+              Ainsi que le développement back-end avec Node.js et une légère
+              initiation à Express.js pour créer des serveurs.
+            </Text>
+            <Text mt="4">
+              Ensuite, nous avons attaqué notre apprentissage sur la blockchain
+              par un peu de culture de cet écosystème (Satoshi Nakamoto,
+              Bitcoin, Ethereum et son fonctionnement, …). Nous avons eu
+              beaucoup de temps de cours sur Solidity et les bonnes pratiques de
+              ce langage (notamment l’utilisation d’OpenZeppelin). Dans un
+              premier temps, nous utilisions Remix pour écrire et déployer nos
+              smart contracts. Avec les bases en Node.js Hardhat, un outil de
+              développement Ethereum, était plus facile à prendre en main. Avec
+              Hardhat nous avons appris à écrire, à l’aide des librairies Waffle
+              et Ethers.js, des tests unitaires sur les smart contracts et des
+              scripts de déploiement et post-déploiement sur différents réseaux.
+            </Text>
+            <Text mt="4">
+              Mis ensemble ces savoirs nous ont permit de présenter un projet
+              full-stack en fin de formation, une dApp avec un front-end réalisé
+              avec ReactJS relié un back-end sur Ethereum (testnet).
+            </Text>
+            <Text mt="4">
+              En parallèle, la promotion a eu l’occasion de présenter des
+              veilles technologiques sur un large panel de sujets.
+            </Text>
+          </>
+        ) : (
+          <>
+            <Text mt="4">
+              I had the chance to participate in the last career change path
+              offered by the school for a period of 6 months. Thanks to the
+              three very competent supervisors in their respective fields, I was
+              able to learn the code with only a distant experience on <b>R</b>.
+            </Text>
+            <Text mt="4">
+              During this training, I learned the culture of the Web and the
+              working practices in this field (Agile & SCRUM method). We
+              practiced the basics of web development with HTML, CSS and
+              JavaScript as well as using GitHub for collaborative or personal
+              projects.
+            </Text>
+            <Text mt="4">
+              From this base, we were able to explore frameworks for front-end
+              development with ReactJS, Bootstrap and Chakra UI. As well as
+              back-end development with Node.js and a slight introduction to
+              Express.js to create servers.
+            </Text>
+            <Text mt="4">
+              Then, we began our learning on blockchain by the culture of this
+              ecosystem (Satoshi Nakamoto, Bitcoin, Ethereum and its operation,
+              …). We spent a lot of time on Solidity and the good practices of
+              this language (in particular the use of OpenZeppelin). At first,
+              we used Remix to write and deploy our smart contracts. With the
+              basics in Node.js, Hardhat, an Ethereum development tool, was
+              easier to pick up. With Hardhat we learned to write, using the
+              Waffle and Ethers.js libraries, unit tests on smart contracts and
+              deployment and post-deployment scripts on different networks.
+            </Text>
+            <Text mt="4">
+              These knowledges put together allowed us to present a full-stack
+              project at the end of the training, a dApp with a front-end made
+              with ReactJS linked to a back-end on Ethereum (testnet).
+            </Text>
+            <Text mt="4">
+              At the same time, we had the opportunity to present technology
+              intelligences on a wide range of subjects.
+            </Text>
+          </>
+        )}
+      </Box>
 
       <Text mt="10" fontSize="lg" color="#FF7F50">
         <i>Avant le code ma spécialité était la biologie.</i>
       </Text>
 
+      {/* DOCTORAT */}
       <Heading mt="6" as="h2">
         Doctorant à l'
         <Link

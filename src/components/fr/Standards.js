@@ -7,6 +7,7 @@ import erc721 from "../../assets/ERC721.png"
 import erc1155 from "../../assets/ERC1155.png"
 import erc777 from "../../assets/ERC777.png"
 import erc2771 from "../../assets/ERC2771.png"
+import { useLang } from "../../hooks/useLang"
 
 const standards = [
   {
@@ -43,9 +44,12 @@ const standards = [
 ]
 
 const Standards = () => {
+  const { lang } = useLang()
   return (
     <>
-      <Heading as="h1">Standards utilisés :</Heading>
+      <Heading as="h1">
+        {lang === "fr" ? "Standards utilisés :" : "Standards used:"}
+      </Heading>
 
       <Flex my="5" flexWrap="wrap" gap="5">
         {standards.map((erc) => {
@@ -72,7 +76,7 @@ const Standards = () => {
       </Flex>
       <Button colorScheme="corail">
         <Link as={RouterLink} to="console">
-          Essayer la console
+          {lang === "fr" ? "Essayer la console" : "Try the console"}
         </Link>
       </Button>
     </>

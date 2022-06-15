@@ -8,6 +8,7 @@ import typescript from "../../assets/typescript.png"
 import ethers from "../../assets/ethers.png"
 import waffle from "../../assets/waffle.png"
 import foundry from "../../assets/foundry.png"
+import { useLang } from "../../hooks/useLang"
 
 const technos = [
   { img: solidity, description: "Solidity" },
@@ -22,9 +23,12 @@ const technos = [
 ]
 
 const Technos = () => {
+  const { lang } = useLang()
   return (
     <>
-      <Heading as="h1">Technologies maitrisées :</Heading>
+      <Heading as="h1">
+        {lang === "fr" ? "Technologies maitrisées :" : "Mastered technologies:"}
+      </Heading>
       <Flex justifyContent="space-between" my="5" flexWrap="wrap" gap="5">
         {technos.map((tech) => {
           return (
