@@ -17,8 +17,10 @@ import {
 import { EmailIcon } from "@chakra-ui/icons"
 import { FaLinkedin, FaGithub } from "react-icons/fa"
 import { AiFillMessage } from "react-icons/ai"
+import { useLang } from "../hooks/useLang"
 
 const Footer = () => {
+  const { lang } = useLang()
   const { hasCopied, onCopy } = useClipboard("raphael.pellet@protonmail.com")
   return (
     <Flex mt="auto" bg="blackAlpha.800">
@@ -35,7 +37,7 @@ const Footer = () => {
         </Box>
         <Box>
           <Text textAlign="center" fontWeight="bold" color="white">
-            Créer à l'aide de{" "}
+            {lang === "fr" ? "Créer à l'aide de " : "Made with "}
             <Link
               _hover={{ color: "corail.500" }}
               href="https://chakra-ui.com/"

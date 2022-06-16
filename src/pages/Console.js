@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react"
 
-import Screen from "../components/fr/Screen"
+import Screen from "../components/Screen"
 import ERC721Provider from "../contexts/ERC721Context"
 import Launcher from "../components/Launcher"
 import Menu from "../components/Menu"

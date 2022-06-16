@@ -1,13 +1,13 @@
 import { Box, Button, Flex, Heading, Image, Link, Text } from "@chakra-ui/react"
 import { Link as RouterLink } from "react-router-dom"
-import oz from "../../assets/openzeppelin.png"
-import ozUp from "../../assets/openzeppelin-up.png"
-import erc20 from "../../assets/ERC20.png"
-import erc721 from "../../assets/ERC721.png"
-import erc1155 from "../../assets/ERC1155.png"
-import erc777 from "../../assets/ERC777.png"
-import erc2771 from "../../assets/ERC2771.png"
-import { useLang } from "../../hooks/useLang"
+import oz from "../assets/openzeppelin.png"
+import ozUp from "../assets/openzeppelin-up.png"
+import erc20 from "../assets/ERC20.png"
+import erc721 from "../assets/ERC721.png"
+import erc1155 from "../assets/ERC1155.png"
+import erc777 from "../assets/ERC777.png"
+import erc2771 from "../assets/ERC2771.png"
+import { useLang } from "../hooks/useLang"
 
 const standards = [
   {

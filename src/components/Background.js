@@ -1,5 +1,5 @@
 import { Box, Divider, Heading, Link, Text } from "@chakra-ui/react"
-import { useLang } from "../../hooks/useLang"
+import { useLang } from "../hooks/useLang"
 
 const link = {
   ideasoft: (

@@ -5,14 +5,12 @@ import {
   Heading,
   Input,
   Link,
-  Spacer,
-  ButtonGroup,
   Text,
 } from "@chakra-ui/react"
 import { ethers } from "ethers"
 import { useEffect, useState } from "react"
 import { useEVM } from "react-ethers"
-import ContractButton from "../ContractButton"
+import ContractButton from "./ContractButton"
 
 const ERC721 = ({ contract, userInfo }) => {
   const { account } = useEVM()

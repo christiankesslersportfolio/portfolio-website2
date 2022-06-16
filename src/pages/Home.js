@@ -7,11 +7,11 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react"
-import Background from "../components/fr/Background"
-import Header from "../components/fr/Header"
-import Standards from "../components/fr/Standards"
-import Technos from "../components/fr/Technos"
-import Vision from "../components/fr/Vision"
+import Background from "../components/Background"
+import Header from "../components/Header"
+import Standards from "../components/Standards"
+import Technos from "../components/Technos"
+import Vision from "../components/Vision"
 import { useLang } from "../hooks/useLang"
 import { ReactComponent as france } from "../assets/france.svg"
 import { ReactComponent as uk } from "../assets/united-kingdom.svg"

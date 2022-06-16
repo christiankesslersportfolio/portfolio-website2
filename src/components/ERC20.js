@@ -1,7 +1,7 @@
 import { Flex, FormLabel, Heading, Input, Link, Text } from "@chakra-ui/react"
 import { ethers } from "ethers"
 import { useState } from "react"
-import ContractButton from "../ContractButton"
+import ContractButton from "./ContractButton"
 
 const ERC20 = ({ token, balance }) => {
   const [amount, setAmount] = useState("50")

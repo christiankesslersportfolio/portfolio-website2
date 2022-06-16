@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react"
-import profilPicture from "../../assets/profil-picture.png"
-import { useLang } from "../../hooks/useLang"
+import profilPicture from "../assets/profil-picture.png"
+import { useLang } from "../hooks/useLang"
 
 const Header = () => {
   const { lang } = useLang()

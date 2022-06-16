@@ -6,7 +6,7 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react"
-import { useLang } from "../../hooks/useLang"
+import { useLang } from "../hooks/useLang"
 
 const Vision = () => {
   const { lang } = useLang()

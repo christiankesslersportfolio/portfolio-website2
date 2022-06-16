@@ -1,15 +1,15 @@
 import { Box, Heading, Text } from "@chakra-ui/react"
 import { useEVM, useContract } from "react-ethers"
 import { Route, Routes } from "react-router-dom"
-import { useERC20 } from "../../hooks/useERC20"
+import { useERC20 } from "../hooks/useERC20"
 
-import { useERC721 } from "../../hooks/useERC721"
+import { useERC721 } from "../hooks/useERC721"
 import Dashboard from "./Dashboard"
 import ERC20 from "./ERC20"
 import ERC721 from "./ERC721"
 import Shop from "./Shop"
-import contracts from "../../contexts/contracts.json"
-import { useERC1155 } from "../../hooks/useERC1155"
+import contracts from "../contexts/contracts.json"
+import { useERC1155 } from "../hooks/useERC1155"
 
 const Screen = () => {
   const { ropsten } = contracts

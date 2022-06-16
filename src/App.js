@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react"
 import { Route, Routes } from "react-router-dom"
 
-import Footer from "./components/fr/Footer"
+import Footer from "./components/Footer"
 import LangProvider from "./contexts/Lang"
 import Console from "./pages/Console"
 

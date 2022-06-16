@@ -9,8 +9,8 @@ import {
 } from "@chakra-ui/react"
 import { ethers } from "ethers"
 import { useState } from "react"
-import { useUserName } from "../../hooks/useUserName"
-import ContractButton from "../ContractButton"
+import { useUserName } from "../hooks/useUserName"
+import ContractButton from "./ContractButton"
 
 const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
   const { userName, surname: _surname } = useUserName()
