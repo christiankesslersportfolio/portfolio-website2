@@ -1,4 +1,3 @@
-import { ethers } from "ethers"
 import { createContext, useEffect, useState } from "react"
 import { useContract, useEVM } from "react-ethers"
 import contracts from "./contracts.json"
@@ -6,7 +5,7 @@ import contracts from "./contracts.json"
 export const ERC1155Context = createContext(null)
 
 const createInventory = async (entrySingle, entryBatch, cards) => {
-  const inventory = { booster: 0, cards: [] }
+  // const inventory = { booster: 0, cards: [] }
 
   // all entries
   const entrylist = []
@@ -53,6 +52,7 @@ const ERC1155Provider = ({ children }) => {
         )
 
         await createInventory(boosterEnters, enters, cards)
+        setUserInfo()
       }
     }
     main()

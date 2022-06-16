@@ -1,4 +1,3 @@
-import { ethers } from "ethers"
 import { createContext, useEffect, useState } from "react"
 import { useContract, useEVM } from "react-ethers"
 import contracts from "./contracts.json"
