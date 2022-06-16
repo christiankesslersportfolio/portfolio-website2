@@ -98,9 +98,9 @@ const Background = () => {
             <Text mt="4">
               J’ai eu la chance de participer à la dernière session de
               reconversion professionnelle proposée par l’école d’une durée de 6
-              mois. Grâce aux trois encadrants très compétant dans leur domaines
-              respectifs, j’ai pu apprendre le code avec seulement une lointaine
-              expérience sur <b>R</b>.
+              mois. Grâce aux trois encadrants, très compétant dans leurs
+              domaines respectifs, j’ai pu apprendre le code avec seulement une
+              lointaine expérience sur R.
             </Text>
             <Text mt="4">
               Pendant cette formation, j’ai appris la culture du Web et les
@@ -122,11 +122,12 @@ const Background = () => {
               beaucoup de temps de cours sur Solidity et les bonnes pratiques de
               ce langage (notamment l’utilisation d’OpenZeppelin). Dans un
               premier temps, nous utilisions Remix pour écrire et déployer nos
-              smart contracts. Avec les bases en Node.js Hardhat, un outil de
-              développement Ethereum, était plus facile à prendre en main. Avec
-              Hardhat nous avons appris à écrire, à l’aide des librairies Waffle
-              et Ethers.js, des tests unitaires sur les smart contracts et des
-              scripts de déploiement et post-déploiement sur différents réseaux.
+              smart contracts. Et ensuite nous sommes aller plus loin avec
+              Hardhat, un outil de développement Ethereum. Avec Hardhat nous
+              avons appris à écrire, à l’aide des librairies Waffle et
+              Ethers.js, des tests unitaires sur les smart contracts et des
+              scripts de déploiement et post-déploiement sur différents réseaux
+              EVM.
             </Text>
             <Text mt="4">
               Mis ensemble ces savoirs nous ont permit de présenter un projet
@@ -164,11 +165,11 @@ const Background = () => {
               ecosystem (Satoshi Nakamoto, Bitcoin, Ethereum and its operation,
               …). We spent a lot of time on Solidity and the good practices of
               this language (in particular the use of OpenZeppelin). At first,
-              we used Remix to write and deploy our smart contracts. With the
-              basics in Node.js, Hardhat, an Ethereum development tool, was
-              easier to pick up. With Hardhat we learned to write, using the
-              Waffle and Ethers.js libraries, unit tests on smart contracts and
-              deployment and post-deployment scripts on different networks.
+              we used Remix to write and deploy our smart contracts. Then we
+              went further with Hardhat, an Ethereum development tool. With
+              Hardhat we learned to write, using the Waffle and Ethers.js
+              libraries, unit tests on smart contracts and deployment and
+              post-deployment scripts on different EVM networks.
             </Text>
             <Text mt="4">
               These knowledges put together allowed us to present a full-stack
@@ -183,52 +184,113 @@ const Background = () => {
         )}
       </Box>
 
-      <Text mt="10" fontSize="lg" color="#FF7F50">
-        <i>Avant le code ma spécialité était la biologie.</i>
-      </Text>
+      {lang === "fr" ? (
+        <Text mt="10" fontSize="lg" color="#FF7F50">
+          <i>Avant le code ma spécialité était la biologie.</i>
+        </Text>
+      ) : (
+        <Text mt="10" fontSize="lg" color="#FF7F50">
+          <i>Before the code my specialty was biology.</i>
+        </Text>
+      )}
 
       {/* DOCTORAT */}
-      <Heading mt="6" as="h2">
-        Doctorant à l'
-        <Link
-          _hover={{ color: "#FF7F50" }}
-          href="https://www.univ-gustave-eiffel.fr/ "
-        >
-          université Paris-Est
-        </Link>
-      </Heading>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        J’ai été pendant 18 mois en préparation d’un doctorat en Science des
-        matériaux à l’IFSTTAR (Institut Français des Sciences et Technologies
-        des Transports, de l’Aménagement et des Réseaux) maintenant{" "}
-        <Link
-          _hover={{ color: "#FF7F50" }}
-          href="https://www.univ-gustave-eiffel.fr/"
-        >
-          université Gustave Eiffel
-        </Link>
-        . Mon sujet de thèse était porté sur la fabrication du béton de chanvre,
-        un matériau isolant, plus précisément mon but était d’identifier les
-        molécules à l’origine d’un retard de prise du ciment une fois mélangé
-        aux copeaux de chanvre.
-      </Text>
-      <Heading mt="6" as="h2">
-        Licence et Master à l’
-        <Link _hover={{ color: "#FF7F50" }} href="https://www.univ-lyon1.fr/">
-          université Claude Bernard Lyon I
-        </Link>
-      </Heading>
-      <Text mt="4" fontSize="xl" lineHeight="8">
-        Mon parcours licence était porté sur l’écologie au sens large, où j’ai
-        étudié les mécanismes de l’évolution, l’étude de la biodiversité, les
-        méthodes de bio-statistiques (là où j’ai fait mes premiers pas avec R),
-        la dynamiques des populations, l’écologie à toute les échelles (de
-        l’individu à la biosphère). En master je me suis spécialisé sur l’étude
-        des végétaux, avec deux axes de compétences : la biochimie
-        (identification des molécules, et connaissances des voies métaboliques)
-        et la génétique (étude des réseaux de gènes, méthodes de génie
-        génétique, …).
-      </Text>
+      {lang === "fr" ? (
+        <>
+          <Heading mt="6" as="h2">
+            Doctorant à l'
+            <Link
+              _hover={{ color: "#FF7F50" }}
+              href="https://www.univ-gustave-eiffel.fr/ "
+            >
+              université Paris-Est
+            </Link>
+          </Heading>
+          <Text mt="4" fontSize="xl" lineHeight="8">
+            J’ai été pendant 18 mois en préparation d’un doctorat en Science des
+            matériaux à l’IFSTTAR (Institut Français des Sciences et
+            Technologies des Transports, de l’Aménagement et des Réseaux)
+            maintenant{" "}
+            <Link
+              _hover={{ color: "#FF7F50" }}
+              href="https://www.univ-gustave-eiffel.fr/"
+            >
+              université Gustave Eiffel
+            </Link>
+            . Mon sujet de thèse était porté sur la fabrication du béton de
+            chanvre, un matériau isolant, plus précisément mon but était
+            d’identifier les molécules à l’origine d’un retard de prise du
+            ciment une fois mélangé aux copeaux de chanvre.
+          </Text>
+          <Heading mt="6" as="h2">
+            Licence et Master à l’
+            <Link
+              _hover={{ color: "#FF7F50" }}
+              href="https://www.univ-lyon1.fr/"
+            >
+              université Claude Bernard Lyon I
+            </Link>
+          </Heading>
+          <Text mt="4" fontSize="xl" lineHeight="8">
+            Mon parcours licence était porté sur l’écologie au sens large, où
+            j’ai étudié les mécanismes de l’évolution, l’étude de la
+            biodiversité, les méthodes de bio-statistiques (là où j’ai fait mes
+            premiers pas avec R), la dynamiques des populations, l’écologie à
+            toute les échelles (de l’individu à la biosphère). En master je me
+            suis spécialisé sur l’étude des végétaux, avec deux axes de
+            compétences : la biochimie (identification des molécules, et
+            connaissances des voies métaboliques) et la génétique (étude des
+            réseaux de gènes, méthodes de génie génétique, …).
+          </Text>
+        </>
+      ) : (
+        <>
+          <Heading mt="6" as="h2">
+            PhD student at{" "}
+            <Link
+              _hover={{ color: "#FF7F50" }}
+              href="https://www.univ-gustave-eiffel.fr/ "
+            >
+              Paris-Est university
+            </Link>
+          </Heading>
+          <Text mt="4" fontSize="xl" lineHeight="8">
+            I was for 18 months in preparation for a PhD in materials science at
+            IFSTTAR (French Institute of Science and Technology for Transport,
+            Development and Networks) now{" "}
+            <Link
+              _hover={{ color: "#FF7F50" }}
+              href="https://www.univ-gustave-eiffel.fr/"
+            >
+              Gustave Eiffel university.
+            </Link>
+            My thesis subject was focused on the manufacture of hemp concrete,
+            an insulating material, more precisely my goal was to identify the
+            molecules at the origin of a delay in taking the cement once mixed
+            with hemp shavings.
+          </Text>
+          <Heading mt="6" as="h2">
+            Bachelor and Master's degree at{" "}
+            <Link
+              _hover={{ color: "#FF7F50" }}
+              href="https://www.univ-lyon1.fr/"
+            >
+              Claude Bernard Lyon I university
+            </Link>
+          </Heading>
+          <Text mt="4" fontSize="xl" lineHeight="8">
+            My bachelor's degree was focused on ecology in the broad sense,
+            where I studied the mechanisms of evolution, the study of
+            biodiversity, bio-statistics methods (where I took my first steps
+            with R ), population dynamics, ecology at all scales (from the
+            individual to the biosphere). In my master's degree, I specialized
+            in the study of plants, with two areas of expertise: biochemistry
+            (identification of molecules, and knowledge of metabolic pathways)
+            and genetics (study of gene networks, genetic engineering methods,
+            etc.).
+          </Text>
+        </>
+      )}
     </>
   )
 }
