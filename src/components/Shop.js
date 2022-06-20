@@ -9,32 +9,33 @@ import {
 } from "@chakra-ui/react"
 import { ethers } from "ethers"
 import { useState } from "react"
+import { useContract, useEVM } from "react-ethers"
 import { useUserName } from "../hooks/useUserName"
 import ContractButton from "./ContractButton"
 
-const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
+const Shop = ({ contract, userColor, erc20, erc20Info, cards }) => {
+  const { network } = useEVM()
+  const shop = useContract(contract.address, contract.abi)
   const { userName, surname: _surname } = useUserName()
+
   const [color, setColor] = useState("#000000")
   const [surname, setSurname] = useState(_surname)
   const [available, setAvailable] = useState("")
   const [booster, setBooster] = useState(0)
 
-  return (
+  return shop ? (
     <>
       {/* CONTRACT INFO */}
       <Flex alignItems="center" justifyContent="space-between">
         <Box>
           <Text>
             Contract Info:
-            <Link
-              href={`https://ropsten.etherscan.io/address/${shop.address}`}
-              isExternal
-            >
+            <Link href={`${network.explorerUrl + shop.address}`} isExternal>
               {shop.address}
             </Link>
           </Text>
           <Text>
-            Le magasin peut utiliser {erc20Info.shopAllowance} de vos ERC20
+            Le magasin peut utiliser {erc20Info.shopAllowance} de vos FT
           </Text>
         </Box>
         <ContractButton
@@ -53,7 +54,9 @@ const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
         p="10"
         textAlign="center"
       >
-        <Heading>Bienvenue au magasin</Heading>
+        <Heading fontSize="6xl" fontFamily="console">
+          Bienvenue au magasin
+        </Heading>
         <Text>Vous pouvez acheter plusieurs tokens</Text>
 
         {/* COULEUR */}
@@ -97,9 +100,9 @@ const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
           <Flex alignItems="center" my="5">
             <FormLabel me="20">
               {!surname ? (
-                <Text>Entrer un nom (cout : 6 ERC20)</Text>
+                <Text>Entrer un nom (cout : 4 ERC20)</Text>
               ) : (
-                <Text>Changer de nom (cout : 6 ERC20)</Text>
+                <Text>Changer de nom (cout : 4 ERC20)</Text>
               )}
 
               <Input
@@ -168,6 +171,8 @@ const Shop = ({ shop, userColor, erc20, erc20Info, cards }) => {
         </Flex>
       </Flex>
     </>
+  ) : (
+    "Loading"
   )
 }
 export default Shop

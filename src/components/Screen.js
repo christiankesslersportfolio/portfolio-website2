@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from "@chakra-ui/react"
-import { useEVM, useContract } from "react-ethers"
+import { useEVM } from "react-ethers"
 import { Route, Routes } from "react-router-dom"
 import { useERC20 } from "../hooks/useERC20"
 
@@ -8,12 +8,11 @@ import Dashboard from "./Dashboard"
 import ERC20 from "./ERC20"
 import ERC721 from "./ERC721"
 import Shop from "./Shop"
-import contracts from "../contexts/contracts.json"
 import { useERC1155 } from "../hooks/useERC1155"
+import contracts from "../contexts/contracts.json"
+import { selectContract } from "../pages/Console"
 
 const Screen = () => {
-  const { ropsten } = contracts
-  const shop = useContract(ropsten.Shop.address, ropsten.Shop.abi)
   const { network, connectionType, account } = useEVM()
   const { token, userColor } = useERC721()
   const { token: erc20, userInfo } = useERC20()
@@ -60,10 +59,7 @@ const Screen = () => {
       ) : (
         <>
           <Routes>
-            <Route
-              path="/"
-              element={<Dashboard balance={userInfo.balance} token={erc20} />}
-            />
+            <Route path="/" element={<Dashboard />} />
             <Route
               path="erc20"
               element={
@@ -77,12 +73,16 @@ const Screen = () => {
             <Route
               path="shop"
               element={
-                shop ? (
+                network.chainId ? (
                   <Shop
-                    shop={shop}
-                    userColor={userColor}
+                    contract={selectContract(
+                      contracts,
+                      network.chainId,
+                      "Shop"
+                    )}
                     erc20={erc20}
                     erc20Info={userInfo}
+                    userColor={userColor}
                     cards={cards}
                   />
                 ) : (

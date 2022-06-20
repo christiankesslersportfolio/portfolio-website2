@@ -11,7 +11,7 @@ import { useState } from "react"
 
 import { useEVM } from "react-ethers"
 
-const Dashboard = ({ balance, token }) => {
+const Dashboard = () => {
   const { network, account, methods } = useEVM()
   const [destination, setDestination] = useState(4)
 
@@ -23,12 +23,15 @@ const Dashboard = ({ balance, token }) => {
         flexDirection="column"
         p="10"
       >
+        <Heading fontSize="6xl" fontFamily="console" mb="5" textAlign="center">
+          Tableau de bord
+        </Heading>
         <Text mb="4" fontSize="2xl" fontFamily="mono">
           {network.name}
         </Text>
         <Text mb="6" fontSize="2xl" fontFamily="mono">
           Compte:{" "}
-          <Link href="" isExternal>
+          <Link href={`${network.explorerUrl + account.address}`} isExternal>
             {account.address}
           </Link>
         </Text>

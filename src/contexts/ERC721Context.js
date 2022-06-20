@@ -1,15 +1,10 @@
 import { createContext, useEffect, useState } from "react"
 import { useContract, useEVM } from "react-ethers"
-import contracts from "./contracts.json"
 
 export const ERC721Context = createContext(null)
 
-const ERC721Provider = ({ children }) => {
-  const { ropsten } = contracts
-  const token = useContract(
-    ropsten.ColoredToken.address,
-    ropsten.ColoredToken.abi
-  )
+const ERC721Provider = ({ children, contract }) => {
+  const token = useContract(contract.address, contract.abi)
   const { account } = useEVM()
   const [userColor, setUserColor] = useState({
     haveColor: false,

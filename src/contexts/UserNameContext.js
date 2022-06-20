@@ -1,12 +1,10 @@
 import { createContext, useEffect, useState } from "react"
 import { useContract, useEVM } from "react-ethers"
-import contracts from "./contracts.json"
 
 export const UserNameContext = createContext(null)
 
-const UserNameProvider = ({ children }) => {
-  const { ropsten } = contracts
-  const userName = useContract(ropsten.UserName.address, ropsten.UserName.abi)
+const UserNameProvider = ({ children, contract }) => {
+  const userName = useContract(contract.address, contract.abi)
   const { account } = useEVM()
   const [surname, setSurname] = useState("")
 

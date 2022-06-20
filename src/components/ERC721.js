@@ -13,7 +13,7 @@ import { useEVM } from "react-ethers"
 import ContractButton from "./ContractButton"
 
 const ERC721 = ({ contract, userInfo }) => {
-  const { account } = useEVM()
+  const { account, network } = useEVM()
   const [receiver, setReceiver] = useState("")
   const [totalSupply, setTotalSupply] = useState(0)
 
@@ -33,10 +33,7 @@ const ERC721 = ({ contract, userInfo }) => {
     <>
       <Text>
         Contract Info:
-        <Link
-          href={`https://ropsten.etherscan.io/address/${contract.address}`}
-          isExternal
-        >
+        <Link href={`${network.explorerUrl + contract.address}`} isExternal>
           {contract.address}
         </Link>
       </Text>
@@ -47,7 +44,7 @@ const ERC721 = ({ contract, userInfo }) => {
         flexDirection="column"
         p="10"
       >
-        <Heading mb="5" textAlign="center">
+        <Heading fontSize="6xl" fontFamily="console" mb="5" textAlign="center">
           Colored Token (COLOR)
         </Heading>
         <Text mb="5" textAlign="center">
@@ -60,7 +57,9 @@ const ERC721 = ({ contract, userInfo }) => {
           Nombre de jetons disponible : {16777215 - totalSupply} / 16777215
         </Text>
 
-        <Heading mb="5">Votre token :</Heading>
+        <Heading fontFamily="mono" mb="5">
+          Votre token :
+        </Heading>
         {userInfo.haveColor ? (
           <Text fontSize="lg" fontWeight="bold" mb="20">
             Votre couleur est le{" "}
