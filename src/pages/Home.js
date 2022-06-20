@@ -15,6 +15,7 @@ import Vision from "../components/Vision"
 import { useLang } from "../hooks/useLang"
 import { ReactComponent as france } from "../assets/france.svg"
 import { ReactComponent as uk } from "../assets/united-kingdom.svg"
+import Footer from "../components/Footer"
 
 const header_fr = (
   <Text fontWeight="bold" px="4rem" fontSize="2xl" textAlign="center">
@@ -40,46 +41,50 @@ const header_en = (
 const Home = () => {
   const { lang, setLang } = useLang()
   return (
-    <Container maxW={"container.xl"}>
-      <Header />
-      <Flex>
-        <Button
+    <>
+      <Container maxW={"container.xl"}>
+        <Header />
+        <Flex>
+          <Button
+            mx="auto"
+            borderRadius="200"
+            h="5rem"
+            colorScheme="amber"
+            variant="outline"
+            onClick={() => setLang((l) => (l === "fr" ? "en" : "fr"))}
+          >
+            <Image w="3rem" as={lang === "fr" ? uk : france} />
+          </Button>
+        </Flex>
+
+        <Divider
           mx="auto"
-          borderRadius="200"
-          h="5rem"
-          colorScheme="amber"
-          variant="outline"
-          onClick={() => setLang((l) => (l === "fr" ? "en" : "fr"))}
-        >
-          <Image w="3rem" as={lang === "fr" ? uk : france} />
-        </Button>
-      </Flex>
+          my="3"
+          width="75%"
+          size="50%"
+          borderColor="#FF7F50"
+          borderBottomWidth="0.125rem"
+        />
+        {lang === "fr" ? header_fr : header_en}
+        <Divider
+          mx="auto"
+          my="3"
+          width="75%"
+          size="50%"
+          borderColor="#FF7F50"
+          borderBottomWidth="0.125rem"
+        />
 
-      <Divider
-        mx="auto"
-        my="3"
-        width="75%"
-        size="50%"
-        borderColor="#FF7F50"
-        borderBottomWidth="0.125rem"
-      />
-      {lang === "fr" ? header_fr : header_en}
-      <Divider
-        mx="auto"
-        my="3"
-        width="75%"
-        size="50%"
-        borderColor="#FF7F50"
-        borderBottomWidth="0.125rem"
-      />
-
-      <Box p="10">
-        <Technos />
-        <Standards />
-        <Background />
-        <Vision />
-      </Box>
-    </Container>
+        <Box p="10">
+          <Technos />
+          <Standards />
+          <Background />
+          <Vision />
+        </Box>
+      </Container>
+      {/* FOOTER */}
+      <Footer />{" "}
+    </>
   )
 }
 

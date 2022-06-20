@@ -29,13 +29,18 @@ const Screen = () => {
       }
       width="75%"
       bg={connectionType === "not initialized" ? "black" : "gray.100"}
-      zIndex={connectionType === "not initialized" ? 100000 : 1}
+      zIndex={connectionType === "not initialized" ? 5 : 1}
       transition="1s"
     >
       {connectionType === "not initialized" || !account.isLogged ? (
         connectionType === "not initialized" ? (
           <>
-            <Heading my="10" textAlign="center" color="gray.100">
+            <Heading
+              fontFamily="mono"
+              my="10"
+              textAlign="center"
+              color="gray.100"
+            >
               Installez une extensions web pour injecter le web3
             </Heading>
             <Text textAlign="center" color="gray.100">
@@ -43,15 +48,20 @@ const Screen = () => {
             </Text>
           </>
         ) : (
-          <Heading mt="10" textAlign="center">
-            Connectez-vous à la dApp pour continuer
-          </Heading>
+          <>
+            <Heading fontFamily="mono" my="10" textAlign="center">
+              Vous êtes connecté sur {network.name}
+            </Heading>
+            <Heading fontFamily="mono" mt="10" textAlign="center">
+              Connectez-vous à la dApp pour continuer
+            </Heading>
+          </>
         )
       ) : (
         <>
           <Routes>
             <Route
-              path="dashboard"
+              path="/"
               element={<Dashboard balance={userInfo.balance} token={erc20} />}
             />
             <Route
@@ -86,7 +96,7 @@ const Screen = () => {
             />
           </Routes>
           <Text
-            bottom="5rem"
+            bottom="1rem"
             right="1rem"
             position="absolute"
             ms="auto"

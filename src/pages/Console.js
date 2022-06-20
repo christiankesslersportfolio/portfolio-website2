@@ -1,4 +1,4 @@
-import { Box, Flex } from "@chakra-ui/react"
+import { Box, Flex, Spacer } from "@chakra-ui/react"
 
 import Screen from "../components/Screen"
 import ERC721Provider from "../contexts/ERC721Context"
@@ -15,9 +15,15 @@ const Console = () => {
         <ERC1155Provider>
           <ERC721Provider>
             <ERC20Provider>
-              <Box>
+              <Box
+                fontFamily="mono"
+                fontSize="xl"
+                minH="100vh"
+                flexDirection="column"
+                display="flex"
+              >
                 <Launcher />
-                <Flex minH="79.4vh">
+                <Flex flexGrow="1">
                   <Menu />
                   <Screen />
                 </Flex>
