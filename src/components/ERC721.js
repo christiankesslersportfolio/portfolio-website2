@@ -16,6 +16,7 @@ const ERC721 = ({ contract, userInfo }) => {
   const { account, network } = useEVM()
   const [receiver, setReceiver] = useState("")
   const [totalSupply, setTotalSupply] = useState(0)
+  const [value, setValue] = useState(0.00005)
 
   useEffect(() => {
     const main = async () => {
@@ -73,7 +74,40 @@ const ERC721 = ({ contract, userInfo }) => {
           </Text>
         )}
 
-        <Heading mb="5">Transférer votre couleur</Heading>
+        {/* BURN */}
+        <Heading fontFamily="mono" mb="5">
+          Brûler votre couleur
+        </Heading>
+        <FormControl mb="4">
+          <FormLabel>Montant associé (min 0.00005 ETH)</FormLabel>
+          <Flex>
+            <Input
+              onChange={(e) => setValue(e.target.value)}
+              value={value}
+              bg="white"
+              type="number"
+              step="0.0005"
+              min="0.00005"
+              me="5"
+              maxW="50%"
+            />
+            <ContractButton
+              contractFunc={() =>
+                contract.burnColor(userInfo.color.replace("#", "0x"), {
+                  value: ethers.utils.parseEther(value),
+                })
+              }
+              isDisabled={!userInfo.haveColor}
+            >
+              Burn your token
+            </ContractButton>
+          </Flex>
+        </FormControl>
+
+        {/* TRANSFER */}
+        <Heading fontFamily="monospace" mb="5">
+          Transférer votre couleur
+        </Heading>
         <FormControl mb="4">
           <FormLabel>Adresse de reception</FormLabel>
           <Flex>

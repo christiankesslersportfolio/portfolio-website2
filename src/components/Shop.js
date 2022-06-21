@@ -43,7 +43,7 @@ const Shop = ({ contract, userColor, erc20, erc20Info, cards }) => {
             erc20.approve(shop.address, ethers.utils.parseEther("50"))
           }
         >
-          Authorisez le magasin pour 50 ERC20
+          Authorisez le magasin pour 50 FT
         </ContractButton>
       </Flex>
 
@@ -71,7 +71,7 @@ const Shop = ({ contract, userColor, erc20, erc20Info, cards }) => {
               {userColor.haveColor ? (
                 <Text color="red.400">Vous avez déjà une couleur</Text>
               ) : (
-                <Text>Choisissez une couleur (cout : 12 ERC20)</Text>
+                <Text>Choisissez une couleur (cout : 12 FT)</Text>
               )}
               <Input
                 disabled={userColor.haveColor}
@@ -100,9 +100,9 @@ const Shop = ({ contract, userColor, erc20, erc20Info, cards }) => {
           <Flex alignItems="center" my="5">
             <FormLabel me="20">
               {!surname ? (
-                <Text>Entrer un nom (cout : 4 ERC20)</Text>
+                <Text>Entrer un nom (cout : 4 FT)</Text>
               ) : (
-                <Text>Changer de nom (cout : 4 ERC20)</Text>
+                <Text>Changer de nom (cout : 4 FT)</Text>
               )}
 
               <Input

@@ -49,6 +49,10 @@ const ContractButton = ({ isDisabled, contractFunc, children }) => {
           errorMessage = "Wrong setup: " + e.message
           break
 
+        case "INSUFFICIENT_FUNDS":
+          errorMessage = "Insufficient funds: " + e.error.message
+          break
+
         case "CALL_EXCEPTION":
           errorMessage = "Wrong network (certainly): " + e.message
           break

@@ -10,6 +10,7 @@ const ERC20 = ({ token, balance }) => {
   const [amount, setAmount] = useState("50")
   const [value, setValue] = useState("0")
   const [totalSupply, setTotalSupply] = useState("0")
+  const [ethPrice, setEthPrice] = useState("0")
 
   useEffect(() => {
     if (token) {
@@ -17,6 +18,8 @@ const ERC20 = ({ token, balance }) => {
         try {
           const supply = await token.totalSupply()
           setTotalSupply(ethers.utils.formatEther(supply.toString()))
+          const ethPrice = await token.ethToUsd(ethers.utils.parseEther("1"))
+          setEthPrice(ethers.utils.formatEther(ethPrice))
         } catch (e) {
           console.log(e)
         }
@@ -133,6 +136,8 @@ const ERC20 = ({ token, balance }) => {
           <FormLabel ms="5">
             <Text>Entrer une valeur</Text>
             <Input
+              step="0.005"
+              min="0"
               bg="white"
               value={value}
               type="number"
@@ -141,6 +146,10 @@ const ERC20 = ({ token, balance }) => {
               }}
             />
           </FormLabel>
+          <Flex color="gray" ms="4" flexDirection="column">
+            <Text>ETH Price: {ethPrice} USD</Text>
+            <Text>Value: {value * Number(ethPrice)} USD</Text>
+          </Flex>
         </Flex>
       </Flex>
     </>
